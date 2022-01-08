@@ -14,10 +14,7 @@ const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
 // Global variables
-const scores = [0, 0];
-let currentScore = 0;
-let currentPlayer = 0;
-let playing = true;
+let scores, currentScore, currentPlayer, playing;
 
 // Functions
 const switchPlayer = () => {
@@ -33,13 +30,16 @@ const initialReset = () => {
   score1Element.textContent = 0;
   current0Element.textContent = 0;
   current1Element.textContent = 0;
+
   diceElement.classList.add("hidden");
+  player0Element.classList.remove("player--winner");
+  player0Element.classList.add("player--active");
+  player1Element.classList.remove("player--winner", "player--active");
 
   currentPlayer = 0;
   currentScore = 0;
   playing = true;
-  scores[0] = 0;
-  scores[1] = 0;
+  scores = [0, 0];
 };
 
 // Initial Reset
@@ -94,10 +94,4 @@ btnHold.addEventListener("click", () => {
 });
 
 // New game functionality
-btnNew.addEventListener("click", () => {
-  document
-    .querySelector(`.player--${currentPlayer}`)
-    .classList.remove("player--winner", "player--active");
-  player0Element.classList.add("player--active");
-  initialReset();
-});
+btnNew.addEventListener("click", initialReset);
