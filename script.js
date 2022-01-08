@@ -52,7 +52,7 @@ btnRoll.addEventListener("click", () => {
     const randomNum = Math.trunc(Math.random() * 6 + 1);
 
     // Display the dice
-    diceElement.src = `dice-${randomNum}.png`;
+    diceElement.src = `./images/dices/dice-${randomNum}.png`;
     diceElement.classList.remove("hidden");
 
     // Check for 1: If 1 then switch to next player else add the score to current player
@@ -97,7 +97,7 @@ btnHold.addEventListener("click", () => {
 btnNew.addEventListener("click", () => {
   document
     .querySelector(`.player--${currentPlayer}`)
-    .classList.remove("player--winner");
+    .classList.remove("player--winner", "player--active");
   player0Element.classList.add("player--active");
   initialReset();
 });
